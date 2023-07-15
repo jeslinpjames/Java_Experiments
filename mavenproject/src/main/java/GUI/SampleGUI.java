@@ -4,9 +4,13 @@
  */
 package GUI;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Action;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -32,8 +36,17 @@ public class SampleGUI extends JFrame{
         myPanel.add(myButton);
         this.add(myPanel);
         this.setVisible(true);
-        }
-    public static void main(String args[]){
-       new SampleGUI();
+        
+        myButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Your Clicked", "Response", 3);
+            }
+        });
+        
     }
+        public static void main(String args[]){
+            new SampleGUI();
+        }
 }
+
