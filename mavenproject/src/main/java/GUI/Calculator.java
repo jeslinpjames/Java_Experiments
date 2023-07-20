@@ -252,6 +252,7 @@ public class Calculator extends javax.swing.JFrame {
             }
         });
 
+        text.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textActionPerformed(evt);
@@ -268,19 +269,19 @@ public class Calculator extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(260, 260, 260)
-                        .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -355,13 +356,13 @@ public class Calculator extends javax.swing.JFrame {
           {        
               char c;
               c = txt.charAt(i);
-              if((c=='+')||(c=='/')||(c=='x')||(c=='-')){
+              if((c=='+')||(c=='/')||(c=='x')||(c=='-')||(c=='*')){
                   oper = c;
                   break;
               }
           }
-          Double x = Double.parseDouble(txt.substring(0,i));
-          Double y = Double.parseDouble(txt.substring(i+1,txt.length()));
+          Double x = Double.valueOf(txt.substring(0,i));
+          Double y = Double.valueOf(txt.substring(i+1,txt.length()));
           Double r = null;
         switch (oper) {
             case '+':
@@ -372,6 +373,9 @@ public class Calculator extends javax.swing.JFrame {
                 break;
             case '/':
                 r=x/y;
+                break;
+            case '*':
+                r=x*y;
                 break;
             case 'x':
                 r=x*y;
@@ -469,10 +473,8 @@ public class Calculator extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Calculator().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Calculator().setVisible(true);
         });
     }
 
