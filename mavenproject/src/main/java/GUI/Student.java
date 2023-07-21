@@ -1,20 +1,32 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
+import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author jes
+ * @author jeslinpjames
  */
-public class Student extends javax.swing.JPanel {
+public class Student extends javax.swing.JFrame {
 
+    private ArrayList<String> studentNames = new ArrayList<>();
+    private ArrayList<int[]> marks = new ArrayList<>();
+    private DefaultTableModel tableModel;
     /**
      * Creates new form Student
      */
     public Student() {
         initComponents();
+        initializeTableModel();
     }
 
     /**
@@ -26,19 +38,373 @@ public class Student extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        jPanel1 = new javax.swing.JPanel();
+        addStudents = new javax.swing.JButton();
+        addMarks = new javax.swing.JButton();
+        displayNames = new javax.swing.JButton();
+        displayGrades = new javax.swing.JButton();
+        findStdAvg = new javax.swing.JButton();
+        findClsAvg = new javax.swing.JButton();
+        clearData = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        addStudents.setText("Add Students");
+        addStudents.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addStudentsActionPerformed(evt);
+            }
+        });
+
+        addMarks.setText("Add Marks");
+        addMarks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addMarksActionPerformed(evt);
+            }
+        });
+
+        displayNames.setText("Display Names");
+        displayNames.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayNamesActionPerformed(evt);
+            }
+        });
+
+        displayGrades.setText("Display Grades");
+        displayGrades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayGradesActionPerformed(evt);
+            }
+        });
+
+        findStdAvg.setText("Find Average(Student)");
+        findStdAvg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findStdAvgActionPerformed(evt);
+            }
+        });
+
+        findClsAvg.setText("Find Average (Class)");
+        findClsAvg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findClsAvgActionPerformed(evt);
+            }
+        });
+
+        clearData.setText("Clear Data");
+        clearData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearDataActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(jTextPane1);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(findStdAvg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(clearData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(findClsAvg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(displayGrades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(displayNames, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addMarks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(addStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+                .addGap(14, 14, 14))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(addStudents)
+                        .addGap(18, 18, 18)
+                        .addComponent(addMarks)
+                        .addGap(18, 18, 18)
+                        .addComponent(displayNames)
+                        .addGap(18, 18, 18)
+                        .addComponent(displayGrades)
+                        .addGap(18, 18, 18)
+                        .addComponent(findStdAvg)
+                        .addGap(18, 18, 18)
+                        .addComponent(findClsAvg)
+                        .addGap(18, 18, 18)
+                        .addComponent(clearData)))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initializeTableModel() {
+        String[] columnNames = {"Student Name", "Subject 1", "Subject 2", "Subject 3", "Total Marks"};
+        tableModel = new DefaultTableModel(columnNames, 0);
+        JTable jTable = new JTable(tableModel);
+        jScrollPane1.setViewportView(jTable);
+    }
+    private void addStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentsActionPerformed
+        // TODO add your handling code here:
+        String studentName = JOptionPane.showInputDialog(this, "Enter student name:");
+        if (studentName != null && !studentName.isEmpty()) {
+            studentNames.add(studentName);
+            tableModel.addRow(new Object[]{studentName, "", "", ""});
+            JOptionPane.showMessageDialog(this, "Student added successfully!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Please enter a valid name.");
+        }
+    }//GEN-LAST:event_addStudentsActionPerformed
+
+    private void addMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMarksActionPerformed
+        // TODO add your handling code here:
+         if (studentNames.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No students found. Please add students first.");
+            return;
+        }
+
+        String selectedStudent = (String) JOptionPane.showInputDialog(this, "Select a student:",
+                "Add Marks", JOptionPane.QUESTION_MESSAGE, null, studentNames.toArray(), studentNames.get(0));
+
+        if (selectedStudent == null) {
+            return; // User canceled the selection
+        }
+
+        int[] studentMarks = new int[3];
+        for (int i = 0; i < 3; i++) {
+            String subjectName = JOptionPane.showInputDialog(this, "Enter marks for subject " + (i + 1) + " for " + selectedStudent + ":");
+            try {
+                studentMarks[i] = Integer.parseInt(subjectName);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Please enter a valid integer value.");
+                return;
+            }
+        }
+        marks.add(studentMarks);
+        updateTableModel(selectedStudent, studentMarks);
+        JOptionPane.showMessageDialog(this, "Marks added for " + selectedStudent + " successfully!");
+    }//GEN-LAST:event_addMarksActionPerformed
+
+    private void displayNamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayNamesActionPerformed
+        // TODO add your handling code here:
+        JFrame namesFrame = new JFrame("Student Names");
+        namesFrame.setSize(300, 200);
+        namesFrame.setLocationRelativeTo(null); // Center the frame on the screen
+
+        // Convert the ArrayList of names to an array for the JList
+        String[] namesArray = studentNames.toArray(new String[0]);
+
+        // Create a JList to display the names
+        JList<String> namesList = new JList<>(namesArray);
+        namesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        // Add the JList to a JScrollPane for scrolling if there are many names
+        JScrollPane scrollPane = new JScrollPane(namesList);
+
+        // Add the JScrollPane to the frame
+        namesFrame.add(scrollPane);
+
+        // Set the frame visible
+        namesFrame.setVisible(true);
+        
+    }//GEN-LAST:event_displayNamesActionPerformed
+
+    private void displayGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayGradesActionPerformed
+        // TODO add your handling code here:
+        JFrame gradesFrame = new JFrame("Student Grades");
+        gradesFrame.setSize(400, 300);
+        gradesFrame.setLocationRelativeTo(null); // Center the frame on the screen
+
+        // Calculate the grades for each student
+        String[] columnNames = {"Student Name", "Grade"};
+        DefaultTableModel gradesTableModel = new DefaultTableModel(columnNames, 0);
+
+        for (int i = 0; i < studentNames.size(); i++) {
+            String studentName = studentNames.get(i);
+            int[] studentMarks = marks.get(i);
+            String grade = calculateGrade(studentMarks[0], studentMarks[1], studentMarks[2]);
+            gradesTableModel.addRow(new Object[]{studentName, grade});
+        }
+
+        // Create a JTable to display the grades
+        JTable gradesTable = new JTable(gradesTableModel);
+
+        // Add the JTable to a JScrollPane for scrolling if there are many grades
+        JScrollPane scrollPane = new JScrollPane(gradesTable);
+
+        // Add the JScrollPane to the frame
+        gradesFrame.add(scrollPane);
+
+        // Set the frame visible
+        gradesFrame.setVisible(true);
+    }//GEN-LAST:event_displayGradesActionPerformed
+
+    private void clearDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearDataActionPerformed
+        // TODO add your handling code here:
+        studentNames.clear();
+        marks.clear();
+
+        // Clear the table
+        tableModel.setRowCount(0);
+
+        // Show a message to indicate data is cleared
+        JOptionPane.showMessageDialog(this, "All data has been cleared.");
+    }//GEN-LAST:event_clearDataActionPerformed
+
+    private void findStdAvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findStdAvgActionPerformed
+        // TODO add your handling code here:
+        if (studentNames.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No students found. Please add students first.");
+        return;
+        }
+
+        // Get the selected student from the user
+        String selectedStudent = (String) JOptionPane.showInputDialog(this, "Select a student:",
+                "Find Average (Student)", JOptionPane.QUESTION_MESSAGE, null, studentNames.toArray(), studentNames.get(0));
+
+        if (selectedStudent == null) {
+            return; // User canceled the selection
+        }
+
+        // Find the marks of the selected student
+        int[] studentMarks = marks.get(studentNames.indexOf(selectedStudent));
+
+        // Calculate the average
+        double average = (studentMarks[0] + studentMarks[1] + studentMarks[2]) / 3.0;
+
+        // Display the average in a new dialog
+        JOptionPane.showMessageDialog(this, "Average marks for " + selectedStudent + ": " + average);
+    }//GEN-LAST:event_findStdAvgActionPerformed
+
+    private void findClsAvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findClsAvgActionPerformed
+        // TODO add your handling code here:
+         if (studentNames.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No students found. Please add students first.");
+        return;
+        }
+
+        // Calculate the average marks for each subject
+        int[] subjectTotalMarks = new int[3];
+
+        for (int[] studentMarks : marks) {
+            for (int i = 0; i < 3; i++) {
+                subjectTotalMarks[i] += studentMarks[i];
+            }
+        }
+
+        int totalStudents = studentNames.size();
+
+        // Calculate the average marks for each subject
+        double[] subjectAverageMarks = new double[3];
+        for (int i = 0; i < 3; i++) {
+            subjectAverageMarks[i] = (double) subjectTotalMarks[i] / totalStudents;
+        }
+
+        // Display the average marks for each subject in a new dialog
+        StringBuilder message = new StringBuilder("Average marks for the class:\n");
+        message.append("Subject 1: ").append(subjectAverageMarks[0]).append("\n");
+        message.append("Subject 2: ").append(subjectAverageMarks[1]).append("\n");
+        message.append("Subject 3: ").append(subjectAverageMarks[2]).append("\n");
+
+        JOptionPane.showMessageDialog(this, message.toString());
+    }//GEN-LAST:event_findClsAvgActionPerformed
+    private String calculateGrade(int subject1Marks, int subject2Marks, int subject3Marks) {
+        int totalMarks = subject1Marks + subject2Marks + subject3Marks;
+        int averageMarks = totalMarks / 3;
+
+        if (averageMarks >= 90) {
+            return "A+";
+        } else if (averageMarks >= 80) {
+            return "A";
+        } else if (averageMarks >= 70) {
+            return "B";
+        } else if (averageMarks >= 60) {
+            return "C";
+        } else if (averageMarks >= 50) {
+            return "D";
+        } else {
+            return "F";
+        }
+    }
+
+    private void updateTableModel(String selectedStudent, int[] studentMarks) {
+        int rowIndex = studentNames.indexOf(selectedStudent);
+        if (rowIndex >= 0) {
+            for (int i = 0; i < 3; i++) {
+                tableModel.setValueAt(studentMarks[i], rowIndex, i + 1);
+            }
+        }
+        int totalMarks = studentMarks[0] + studentMarks[1] + studentMarks[2];
+        tableModel.setValueAt(totalMarks, rowIndex, 4);
+    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Student().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addMarks;
+    private javax.swing.JButton addStudents;
+    private javax.swing.JButton clearData;
+    private javax.swing.JButton displayGrades;
+    private javax.swing.JButton displayNames;
+    private javax.swing.JButton findClsAvg;
+    private javax.swing.JButton findStdAvg;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }
