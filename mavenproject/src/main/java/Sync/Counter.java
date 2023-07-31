@@ -6,8 +6,32 @@ package Sync;
 
 /**
  *
- * @author james
+ * @author jeslinpjames
  */
 public class Counter {
+    private int limit;
+    private int count;
+    public Counter(int limit){
+        this.limit = limit;
+        this.count =0;
+    }
+    public void increment(){
+        if(count>=limit){
+            System.out.println("Limit Reached, Waiting for decrement.");
+        }
+        else{
+            count++;
+            System.out.println("Current count incremented to : "+count);
+        }
+    }
+    public void decrement(){
+        if(count<=0){
+            System.out.println("Count can't be decremented.");
+        }
+        else{
+            count--;
+            System.out.println("Current count decremented to : "+count);
+        }
+    }
     
 }
