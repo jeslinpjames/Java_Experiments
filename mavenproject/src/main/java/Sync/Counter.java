@@ -15,7 +15,7 @@ public class Counter {
         this.limit = limit;
         this.count =0;
     }
-    public void increment(){
+    public synchronized void increment(){
         if(count>=limit){
             System.out.println("Limit Reached, Waiting for decrement.");
         }
@@ -24,7 +24,7 @@ public class Counter {
             System.out.println("Current count incremented to : "+count);
         }
     }
-    public void decrement(){
+    public synchronized void decrement(){
         if(count<=0){
             System.out.println("Count can't be decremented.");
         }
